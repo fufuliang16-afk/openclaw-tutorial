@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw安装指南 - OpenClaw教学网站</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-robot"></i> OpenClaw教学
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="installation.html">安装指南</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tutorials.html">使用教程</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resources.html">资源</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 安装指南内容 -->
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-3">
+                <!-- 侧边栏导航 -->
+                <div class="sticky-top" style="top: 20px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">安装指南目录</h5>
+                            <div class="list-group list-group-flush">
+                                <a href="#prerequisites" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-check-circle me-2"></i>系统要求
+                                </a>
+                                <a href="#quick-install" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-bolt me-2"></i>快速安装
+                                </a>
+                                <a href="#detailed-install" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-list-ol me-2"></i>详细步骤
+                                </a>
+                                <a href="#platform-specific" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-desktop me-2"></i>平台特定指南
+                                </a>
+                                <a href="#troubleshooting" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-wrench me-2"></i>故障排除
+                                </a>
+                                <a href="#verification" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-check me-2"></i>验证安装
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-9">
+                <!-- 主要内容 -->
+                <h1 class="mb-4">OpenClaw安装指南</h1>
+                <p class="lead">本指南将帮助你完成OpenClaw的安装和基本配置。</p>
+                
+                <!-- 系统要求 -->
+                <section id="prerequisites" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">系统要求</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-server text-primary me-2"></i>基本要求
+                                    </h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            <strong>Node.js</strong> v18.0.0 或更高版本
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            <strong>npm</strong> v9.0.0 或更高版本
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            <strong>操作系统</strong>: macOS, Linux, Windows
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            <strong>内存</strong>: 至少 2GB RAM
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            <strong>磁盘空间</strong>: 至少 500MB 可用空间
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-tools text-primary me-2"></i>推荐配置
+                                    </h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="fas fa-star text-warning me-2"></i>
+                                            <strong>Node.js</strong> v20+（LTS版本）
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-star text-warning me-2"></i>
+                                            <strong>终端</strong>: iTerm2, Windows Terminal
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-star text-warning me-2"></i>
+                                            <strong>Shell</strong>: zsh, bash, PowerShell
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-star text-warning me-2"></i>
+                                            <strong>网络</strong>: 稳定的互联网连接
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-star text-warning me-2"></i>
+                                            <strong>编辑器</strong>: VS Code, Sublime Text
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 快速安装 -->
+                <section id="quick-install" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">快速安装</h2>
+                    <p>如果你已经满足系统要求，可以使用以下命令快速安装：</p>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header bg-dark text-light">
+                            <i class="fas fa-terminal me-2"></i>安装命令
+                        </div>
+                        <div class="card-body">
+                            <pre><code class="language-bash"># 使用npm全局安装
+npm install -g openclaw
+
+# 或者使用npx（无需安装）
+npx openclaw@latest configure
+
+# 验证安装
+openclaw --version</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>提示：</strong>使用 <code>npx</code> 可以无需全局安装直接运行最新版本的OpenClaw。
+                    </div>
+                </section>
+                
+                <!-- 详细步骤 -->
+                <section id="detailed-install" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">详细安装步骤</h2>
+                    
+                    <div class="accordion" id="installSteps">
+                        <!-- 步骤1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#step1">
+                                    步骤 1: 检查Node.js版本
+                                </button>
+                            </h2>
+                            <div id="step1" class="accordion-collapse collapse show" data-bs-parent="#installSteps">
+                                <div class="accordion-body">
+                                    <p>首先检查你的Node.js版本：</p>
+                                    <pre><code class="language-bash">node --version
+# 应该显示 v18.0.0 或更高版本
+
+npm --version
+# 应该显示 v9.0.0 或更高版本</code></pre>
+                                    <p>如果版本过低，请访问 <a href="https://nodejs.org/" target="_blank">Node.js官网</a> 下载最新LTS版本。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 步骤2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step2">
+                                    步骤 2: 安装OpenClaw
+                                </button>
+                            </h2>
+                            <div id="step2" class="accordion-collapse collapse" data-bs-parent="#installSteps">
+                                <div class="accordion-body">
+                                    <p>使用npm全局安装OpenClaw：</p>
+                                    <pre><code class="language-bash"># 全局安装（推荐）
+npm install -g openclaw
+
+# 或者安装特定版本
+npm install -g openclaw@latest</code></pre>
+                                    <p>如果遇到权限问题，可以尝试：</p>
+                                    <pre><code class="language-bash"># 使用sudo（macOS/Linux）
+sudo npm install -g openclaw
+
+# 或者修改npm全局目录权限
+npm config set prefix ~/.npm-global
+echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+npm install -g openclaw</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 步骤3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step3">
+                                    步骤 3: 运行配置向导
+                                </button>
+                            </h2>
+                            <div id="step3" class="accordion-collapse collapse" data-bs-parent="#installSteps">
+                                <div class="accordion-body">
+                                    <p>安装完成后，运行配置向导：</p>
+                                    <pre><code class="language-bash"># 运行配置向导
+openclaw configure
+
+# 或者使用交互式向导
+openclaw onboard</code></pre>
+                                    <p>配置向导会引导你完成：</p>
+                                    <ol>
+                                        <li>选择工作空间目录</li>
+                                        <li>配置AI模型提供商</li>
+                                        <li>设置通信渠道</li>
+                                        <li>安装插件</li>
+                                        <li>创建初始配置文件</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 步骤4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step4">
+                                    步骤 4: 启动网关
+                                </button>
+                            </h2>
+                            <div id="step4" class="accordion-collapse collapse" data-bs-parent="#installSteps">
+                                <div class="accordion-body">
+                                    <p>安装并配置完成后，启动OpenClaw网关：</p>
+                                    <pre><code class="language-bash"># 启动网关服务
+openclaw gateway start
+
+# 检查网关状态
+openclaw gateway status
+
+# 查看日志
+openclaw logs --follow</code></pre>
+                                    <p>网关启动后，OpenClaw就可以开始工作了！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 平台特定指南 -->
+                <section id="platform-specific" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">平台特定指南</h2>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fab fa-apple text-dark me-2"></i>macOS
+                                    </h5>
+                                    <ul>
+                                        <li>使用Homebrew安装Node.js：<br>
+                                            <code>brew install node</code>
+                                        </li>
+                                        <li>推荐使用iTerm2作为终端</li>
+                                        <li>可能需要配置PATH：<br>
+                                            <code>echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshrc</code>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fab fa-linux text-dark me-2"></i>Linux
+                                    </h5>
+                                    <ul>
+                                        <li>使用包管理器安装Node.js：<br>
+                                            Ubuntu: <code>sudo apt install nodejs npm</code><br>
+                                            Fedora: <code>sudo dnf install nodejs npm</code>
+                                        </li>
+                                        <li>可能需要安装build-essential：<br>
+                                            <code>sudo apt install build-essential</code>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fab fa-windows text-dark me-2"></i>Windows
+                                    </h5>
+                                    <ul>
+                                        <li>从Node.js官网下载安装包</li>
+                                        <li>使用Windows Terminal或PowerShell</li>
+                                        <li>可能需要以管理员身份运行终端</li>
+                                        <li>考虑使用WSL2获得更好的体验</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 故障排除 -->
+                <section id="troubleshooting" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">常见问题与故障排除</h2>
+                    
+                    <div class="accordion" id="troubleshootingAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#issue1">
+                                    问题: "command not found: openclaw"
+                                </button>
+                            </h2>
+                            <div id="issue1" class="accordion-collapse collapse show" data-bs-parent="#troubleshootingAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>原因：</strong>npm全局目录不在PATH中</p>
+                                    <p><strong>解决方案：</strong></p>
+                                    <pre><code class="language-bash"># 查找npm全局目录
+npm config get prefix
+
+# 将目录添加到PATH（macOS/Linux）
+echo 'export PATH="$(npm config get prefix)/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+
+# Windows: 将npm全局目录添加到系统PATH环境变量</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#issue2">
+                                    问题: 权限错误 (EACCES)
+                                </button>
+                            </h2>
+                            <div id="issue2" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>原因：</strong>没有权限写入npm全局目录</p>
+                                    <p><strong>解决方案：</strong></p>
+                                    <pre><code class="language-bash"># 方法1: 使用sudo（不推荐）
+sudo npm install -g openclaw
+
+# 方法2: 修改npm全局目录所有权（macOS/Linux）
+sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
+
+# 方法3: 使用nvm管理Node.js版本
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+nvm install --lts
+nvm use --lts
+npm install -g openclaw</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 验证安装 -->
+                <section id="verification" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">验证安装</h2>
+                    
+                    <p>安装完成后，运行以下命令验证OpenClaw是否正常工作：</p>
+                    
+                    <div class="card">
+                        <div class

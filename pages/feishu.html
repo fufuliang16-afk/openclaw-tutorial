@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw飞书集成教程 - OpenClaw教学网站</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-robot"></i> OpenClaw教学
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="installation.html">安装指南</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tutorials.html">使用教程</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="skills.html">技能开发</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="feishu.html">飞书集成</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 飞书集成内容 -->
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-3">
+                <!-- 侧边栏导航 -->
+                <div class="sticky-top" style="top: 20px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">飞书集成目录</h5>
+                            <div class="list-group list-group-flush">
+                                <a href="#overview" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-info-circle me-2"></i>概述
+                                </a>
+                                <a href="#prerequisites" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-check-circle me-2"></i>准备工作
+                                </a>
+                                <a href="#create-app" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-plus-circle me-2"></i>创建飞书应用
+                                </a>
+                                <a href="#configure-openclaw" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-cog me-2"></i>配置OpenClaw
+                                </a>
+                                <a href="#event-subscription" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-bell me-2"></i>事件订阅
+                                </a>
+                                <a href="#testing" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-vial me-2"></i>测试连接
+                                </a>
+                                <a href="#troubleshooting" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-wrench me-2"></i>故障排除
+                                </a>
+                                <a href="#advanced-features" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-rocket me-2"></i>高级功能
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-9">
+                <!-- 主要内容 -->
+                <h1 class="mb-4">OpenClaw飞书集成教程</h1>
+                <p class="lead">基于实际经验，手把手教你配置OpenClaw与飞书的集成。</p>
+                
+                <!-- 概述 -->
+                <section id="overview" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">概述</h2>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-comments me-2 text-primary"></i>为什么集成飞书？
+                                    </h5>
+                                    <ul>
+                                        <li><strong>企业级通信</strong> - 在企业环境中使用</li>
+                                        <li><strong>移动办公</strong> - 通过手机随时访问</li>
+                                        <li><strong>团队协作</strong> - 在群聊中使用AI助手</li>
+                                        <li><strong>自动化工作流</strong> - 集成企业应用</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-bolt me-2 text-primary"></i>集成功能
+                                    </h5>
+                                    <ul>
+                                        <li><strong>实时聊天</strong> - 在飞书中与OpenClaw对话</li>
+                                        <li><strong>文件操作</strong> - 访问飞书文档和云盘</li>
+                                        <li><strong>通知推送</strong> - 接收任务通知</li>
+                                        <li><strong>群组管理</strong> - 在团队群聊中提供帮助</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success mt-4">
+                        <i class="fas fa-check-circle me-2"></i>
+                        <strong>本教程基于实际配置经验编写</strong>，所有步骤都经过实际测试验证。
+                    </div>
+                </section>
+                
+                <!-- 准备工作 -->
+                <section id="prerequisites" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">准备工作</h2>
+                    
+                    <div class="card">
+                        <div class="card-header bg-dark text-light">
+                            <i class="fas fa-tools me-2"></i>所需条件
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>软件要求</h5>
+                                    <ul>
+                                        <li>✅ OpenClaw 已安装并运行</li>
+                                        <li>✅ Node.js v18+</li>
+                                        <li>✅ 稳定的网络连接</li>
+                                        <li>✅ 飞书账号（企业版）</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>账号要求</h5>
+                                    <ul>
+                                        <li>✅ 飞书开放平台账号</li>
+                                        <li>✅ 企业管理员权限（部分功能）</li>
+                                        <li>✅ 可创建企业自建应用</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="alert alert-info mt-3">
+                                <i class="fas fa-info-circle me-2"></i>
+                                <strong>提示：</strong>如果你还没有飞书企业账号，可以访问 
+                                <a href="https://www.feishu.cn/" target="_blank">飞书官网</a> 注册试用。
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 创建飞书应用 -->
+                <section id="create-app" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">创建飞书应用</h2>
+                    
+                    <div class="accordion" id="createAppSteps">
+                        <!-- 步骤1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#app-step1">
+                                    步骤1：登录飞书开放平台
+                                </button>
+                            </h2>
+                            <div id="app-step1" class="accordion-collapse collapse show" data-bs-parent="#createAppSteps">
+                                <div class="accordion-body">
+                                    <p>访问飞书开放平台：</p>
+                                    <pre><code class="language-text">https://open.feishu.cn/app</code></pre>
+                                    
+                                    <p>使用你的飞书账号登录。</p>
+                                    
+                                    <div class="alert alert-warning">
+                                        <i class="fas fa-exclamation-triangle me-2"></i>
+                                        <strong>注意：</strong>国际版用户请访问 
+                                        <a href="https://open.larksuite.com/app" target="_blank">https://open.larksuite.com/app</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 步骤2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#app-step2">
+                                    步骤2：创建企业自建应用
+                                </button>
+                            </h2>
+                            <div id="app-step2" class="accordion-collapse collapse" data-bs-parent="#createAppSteps">
+                                <div class="accordion-body">
+                                    <ol>
+                                        <li>点击"创建企业自建应用"</li>
+                                        <li>填写应用信息：
+                                            <ul>
+                                                <li><strong>应用名称</strong>：OpenClaw助手</li>
+                                                <li><strong>应用描述</strong>：AI个人助手</li>
+                                                <li><strong>应用图标</strong>：上传或选择图标</li>
+                                            </ul>
+                                        </li>
+                                        <li>点击"确定创建"</li>
+                                    </ol>
+                                    
+                                    <div class="text-center my-3">
+                                        <img src="https://via.placeholder.com/600x300/4361ee/ffffff?text=飞书创建应用界面" 
+                                             alt="飞书创建应用界面" 
+                                             class="img-fluid rounded border">
+                                        <p class="text-muted small mt-2">飞书创建应用界面示意图</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 步骤3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#app-step3">
+                                    步骤3：获取应用凭证
+                                </button>
+                            </h2>
+                            <div id="app-step3" class="accordion-collapse collapse" data-bs-parent="#createAppSteps">
+                                <div class="accordion-body">
+                                    <p>创建应用后，进入"凭证与基础信息"页面：</p>
+                                    
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5>重要信息：</h5>
+                                            <ul>
+                                                <li><strong>App ID</strong>：格式如 <code>cli_xxx</code></li>
+                                                <li><strong>App Secret</strong>：长字符串，妥善保管</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <pre><code class="language-text">示例：
+App ID: cli_a92d073398385bc2
+App Secret: pNIXFyff9GVRInlG3PDMpb8UKeEEAkGT</code></pre>
+                                    
+                                    <div class="alert alert-danger mt-3">
+                                        <i class="fas fa-key me-2"></i>
+                                        <strong>安全警告：</strong>App Secret 相当于密码，不要泄露给他人！
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 步骤4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#app-step4">
+                                    步骤4：配置权限
+                                </button>
+                            </h2>
+                            <div id="app-step4" class="accordion-collapse collapse" data-bs-parent="#createAppSteps">
+                                <div class="accordion-body">
+                                    <p>在"权限管理"页面，点击"批量导入"，粘贴以下权限配置：</p>
+                                    
+                                    <pre><code class="language-json">{
+  "scopes": {
+    "tenant": [
+      "aily:file:read",
+      "aily:file:write",
+      "application:application.app_message_stats.overview:readonly",
+      "application:application:self_manage",
+      "application:bot.menu:write",
+      "cardkit:card:read",
+      "cardkit:card:write",
+      "contact:user.employee_id:readonly",
+      "corehr:file:download",
+      "event:ip_list",
+      "im:chat.access_event.bot_p2p_chat:read",
+      "im:chat.members:bot_access",
+      "im:message",
+      "im:message.group_at_msg:readonly",
+      "im:message.p2p_msg:readonly",
+      "im:message:readonly",
+      "im:message:send_as_bot",
+      "im:resource"
+    ],
+    "user": ["aily:file:read", "aily:file:write", "im:chat.access_event.bot_p2p_chat:read"]
+  }
+}</code></pre>
+                                    
+                                    <div class="alert alert-info mt-3">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        这些权限包含了聊天、文件操作等基本功能。根据你的需求可以增减。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 配置OpenClaw -->
+                <section id="configure-openclaw" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">配置OpenClaw</h2>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header bg-dark text-light">
+                            <i class="fas fa-terminal me-2"></i>方法1：使用命令行配置
+                        </div>
+                        <div class="card-body">
+                            <pre><code class="language-bash"># 运行配置向导
+openclaw channels add
+
+# 选择 Feishu 渠道
+# 输入你的 App ID 和 App Secret
+# 完成配置</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header bg-dark text-light">
+                            <i class="fas fa-file-code me-2"></i>方法2：手动编辑配置文件
+                        </div>
+                        <div class="card-body">
+                            <p>编辑OpenClaw配置文件：</p>
+                            <pre><code class="language-bash"># 配置文件位置
+~/.openclaw/openclaw.json</code></pre>
+                            
+                            <p>添加飞书配置：</p>
+                            <pre><code class="language-json">{
+  "channels": {
+    "feishu": {
+      "enabled": true,
+      "appId": "你的_App_ID",
+      "appSecret": "你的_App_Secret",
+      "domain": "feishu",
+      "groupPolicy": "open",
+      "dmPolicy": "pairing",
+      "accounts": {
+        "main": {
+          "appId": "你的_App_ID",
+          "appSecret": "你的_App_Secret",
+          "botName": "OpenClaw助手",
+          "domain": "feishu"
+        }
+      },
+      "typingIndicator": true,
+      "resolveSenderNames": true
+    }
+  }
+}</code></pre>
+                            
+                            <div class="alert alert-warning mt-3">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                <strong>注意：</strong>编辑配置文件后需要重启OpenClaw网关：
+                                <code>openclaw gateway restart</code>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 事件订阅 -->
+                <section id="event-subscription" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">配置事件订阅（关键步骤）</h2>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <p>这是最关键的步骤！在飞书开放平台配置事件订阅：</p>
+                            
+                            <ol class="mb-4">
+                                <li>进入"事件与回调"页面</li>
+                                <li>在"订阅方式"选择"使用长连接接收事件/回调"</li>
+                                <li>添加事件：<code>im.message.receive_v1</code></li>
+                                <li>保存配置</li>
+                            </ol>
+                            
+                            <div class="alert alert-danger">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                <strong>重要：</strong>必须选择"长连接"模式！Webhook模式需要公网IP，不适合大多数用户。
+                            </div>
+                            
+                            <h5 class="mt-4">为什么需要事件订阅？</h5>
+                            <ul>
+                                <li>让OpenClaw能够接收飞书消息</

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw使用教程 - OpenClaw教学网站</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-robot"></i> OpenClaw教学
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="installation.html">安装指南</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="tutorials.html">使用教程</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="skills.html">技能开发</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="feishu.html">飞书集成</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 教程内容 -->
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-3">
+                <!-- 侧边栏导航 -->
+                <div class="sticky-top" style="top: 20px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">教程目录</h5>
+                            <div class="list-group list-group-flush">
+                                <a href="#getting-started" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-play me-2"></i>快速开始
+                                </a>
+                                <a href="#basic-commands" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-terminal me-2"></i>基本命令
+                                </a>
+                                <a href="#file-operations" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-file-alt me-2"></i>文件操作
+                                </a>
+                                <a href="#web-search" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-search me-2"></i>网络搜索
+                                </a>
+                                <a href="#memory-management" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-brain me-2"></i>记忆管理
+                                </a>
+                                <a href="#advanced-features" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-rocket me-2"></i>高级功能
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-9">
+                <!-- 主要内容 -->
+                <h1 class="mb-4">OpenClaw使用教程</h1>
+                <p class="lead">从基础到高级，全面掌握OpenClaw的使用方法。</p>
+                
+                <!-- 快速开始 -->
+                <section id="getting-started" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">快速开始</h2>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header bg-dark text-light">
+                            <i class="fas fa-bolt me-2"></i>第一步：启动OpenClaw
+                        </div>
+                        <div class="card-body">
+                            <p>安装完成后，你可以通过以下方式启动OpenClaw：</p>
+                            
+                            <h5 class="mt-3">方式1：命令行模式</h5>
+                            <pre><code class="language-bash"># 直接运行命令
+openclaw "帮我查看当前目录的文件"
+
+# 或者进入交互模式
+openclaw</code></pre>
+                            
+                            <h5 class="mt-3">方式2：作为服务运行</h5>
+                            <pre><code class="language-bash"># 启动网关服务
+openclaw gateway start
+
+# 检查服务状态
+openclaw gateway status
+
+# 查看日志
+openclaw logs --follow</code></pre>
+                            
+                            <h5 class="mt-3">方式3：通过API调用</h5>
+                            <pre><code class="language-bash"># OpenClaw提供REST API
+curl -X POST http://localhost:18789/v1/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message": "你好"}'</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 基本命令 -->
+                <section id="basic-commands" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">基本命令</h2>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>命令</th>
+                                    <th>描述</th>
+                                    <th>示例</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>openclaw --help</code></td>
+                                    <td>显示帮助信息</td>
+                                    <td><code>openclaw --help</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>openclaw --version</code></td>
+                                    <td>显示版本信息</td>
+                                    <td><code>openclaw --version</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>openclaw status</code></td>
+                                    <td>检查系统状态</td>
+                                    <td><code>openclaw status</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>openclaw doctor</code></td>
+                                    <td>诊断系统问题</td>
+                                    <td><code>openclaw doctor --fix</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>openclaw configure</code></td>
+                                    <td>运行配置向导</td>
+                                    <td><code>openclaw configure</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>openclaw channels list</code></td>
+                                    <td>列出通信渠道</td>
+                                    <td><code>openclaw channels list</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="alert alert-info mt-3">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        <strong>提示：</strong>大多数命令都支持 <code>--help</code> 参数查看详细用法。
+                    </div>
+                </section>
+                
+                <!-- 文件操作 -->
+                <section id="file-operations" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">文件操作</h2>
+                    
+                    <p>OpenClaw可以帮你处理各种文件操作任务：</p>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-file me-2 text-primary"></i>读取文件
+                                    </h5>
+                                    <p>你可以让OpenClaw读取和分析文件：</p>
+                                    <pre><code class="language-bash"># 直接请求读取文件
+openclaw "请读取README.md文件并总结内容"
+
+# 或者更具体的指令
+openclaw "分析package.json文件中的依赖"</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-edit me-2 text-primary"></i>编辑文件
+                                    </h5>
+                                    <p>OpenClaw可以智能编辑文件：</p>
+                                    <pre><code class="language-bash"># 添加内容到文件
+openclaw "在README.md末尾添加安装说明"
+
+# 修改文件内容
+openclaw "更新config.json中的API密钥"
+
+# 创建新文件
+openclaw "创建一个Python脚本用于数据清洗"</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card mt-4">
+                        <div class="card-header bg-dark text-light">
+                            <i class="fas fa-tasks me-2"></i>文件操作示例
+                        </div>
+                        <div class="card-body">
+                            <h5>示例1：整理项目文档</h5>
+                            <pre><code class="language-bash"># 让OpenClaw整理项目文档
+openclaw "请扫描当前目录的所有Markdown文件，创建一个索引文档"</code></pre>
+                            
+                            <h5 class="mt-3">示例2：批量重命名</h5>
+                            <pre><code class="language-bash"># 批量重命名文件
+openclaw "将所有.jpg文件重命名为image_001.jpg格式"</code></pre>
+                            
+                            <h5 class="mt-3">示例3：数据提取</h5>
+                            <pre><code class="language-bash"># 从日志文件中提取信息
+openclaw "从app.log中提取所有错误信息并保存到errors.txt"</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 网络搜索 -->
+                <section id="web-search" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">网络搜索与信息获取</h2>
+                    
+                    <p>OpenClaw可以帮你搜索网络信息：</p>
+                    
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">基本搜索</h5>
+                            <pre><code class="language-bash"># 搜索最新信息
+openclaw "搜索OpenAI最新发布的模型"
+
+# 获取技术文档
+openclaw "查找Node.js v20的新特性"
+
+# 研究某个主题
+openclaw "研究机器学习在医疗领域的应用"</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">高级信息处理</h5>
+                            <pre><code class="language-bash"># 比较分析
+openclaw "比较React和Vue.js的优缺点"
+
+# 数据收集
+openclaw "收集2024年AI领域的重要事件"
+
+# 趋势分析
+openclaw "分析当前前端开发的技术趋势"</code></pre>
+                            
+                            <div class="alert alert-warning mt-3">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                <strong>注意：</strong>网络搜索功能需要配置相应的API密钥，请参考安装指南中的配置步骤。
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 记忆管理 -->
+                <section id="memory-management" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">记忆管理</h2>
+                    
+                    <p>OpenClaw使用文件系统来管理记忆，确保会话间的连续性：</p>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">记忆文件结构</h5>
+                                    <pre><code class="language-bash">~/.openclaw/workspace/
+├── MEMORY.md          # 长期记忆
+├── memory/            # 每日记忆
+│   ├── 2024-01-01.md
+│   ├── 2024-01-02.md
+│   └── ...
+├── AGENTS.md          # 代理配置
+├── SOUL.md            # 个性定义
+└── USER.md            # 用户信息</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">记忆操作</h5>
+                                    <pre><code class="language-bash"># 查看记忆
+openclaw "我们昨天讨论了什么？"
+
+# 更新记忆
+openclaw "记住我喜欢用VS Code编辑器"
+
+# 整理记忆
+openclaw "整理最近一周的工作记录"</code></pre>
+                                    
+                                    <p class="mt-3">OpenClaw会自动：</p>
+                                    <ul>
+                                        <li>记录重要对话</li>
+                                        <li>保存用户偏好</li>
+                                        <li>维护项目上下文</li>
+                                        <li>创建每日总结</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 高级功能 -->
+                <section id="advanced-features" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">高级功能</h2>
+                    
+                    <div class="accordion" id="advancedFeatures">
+                        <!-- 子代理 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#subagents">
+                                    子代理系统
+                                </button>
+                            </h2>
+                            <div id="subagents" class="accordion-collapse collapse show" data-bs-parent="#advancedFeatures">
+                                <div class="accordion-body">
+                                    <p>OpenClaw可以创建子代理来处理复杂任务：</p>
+                                    <pre><code class="language-bash"># 创建专门处理数据的子代理
+openclaw "创建一个子代理来分析销售数据"
+
+# 并行处理多个任务
+openclaw "同时搜索Python教程和JavaScript教程"</code></pre>
+                                    
+                                    <div class="alert alert-info mt-3">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        子代理可以独立运行，适合处理耗时任务或需要专门知识的任务。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 自动化工作流 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#workflow">
+                                    自动化工作流
+                                </button>
+                            </h2>
+                            <div id="workflow" class="accordion-collapse collapse" data-bs-parent="#advancedFeatures">
+                                <div class="accordion-body">
+                                    <p>创建自动化工作流：</p>
+                                    <pre><code class="language-bash"># 每日自动化任务
+openclaw "设置每日9点检查邮件和日历"
+
+# 数据处理流水线
+openclaw "创建数据处理流水线：下载→清洗→分析→报告"
+
+# 监控任务
+openclaw "监控服务器日志，发现错误时通知我"</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 插件系统 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#plugins">
+                                    插件系统
+                                </button>
+                            </h2>
+                            <div id="plugins" class="accordion-collapse collapse" data-bs-parent="#advancedFeatures">
+                                <div class="accordion-body">
+                                    <p>扩展OpenClaw功能：</p>
+                                    <pre><code class="language-bash"># 安装插件
+openclaw plugins install @openclaw/feishu
+
+# 列出已安装插件
+openclaw plugins list
+
+# 配置插件
+openclaw "配置飞书插件连接到我的账号"</code></pre>
+                                    
+                                    <p class="mt-3">常用插件：</p>
+                                    <ul>
+                                        <li><strong>飞书插件</strong> - 企业通信集成</li>
+                                        <li><strong>Git插件</strong> - 版本控制</li>
+                                        <li><strong>日历插件</strong> - 日程管理</li>
+                                        <li><strong>邮件插件</strong> - 邮件处理</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 下一步 -->
+                <div class

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw技能开发指南 - OpenClaw教学网站</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-robot"></i> OpenClaw教学
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="installation.html">安装指南</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tutorials.html">使用教程</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="skills.html">技能开发</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="feishu.html">飞书集成</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 技能开发内容 -->
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-3">
+                <!-- 侧边栏导航 -->
+                <div class="sticky-top" style="top: 20px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">开发指南目录</h5>
+                            <div class="list-group list-group-flush">
+                                <a href="#what-are-skills" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-question-circle me-2"></i>什么是技能？
+                                </a>
+                                <a href="#skill-structure" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-folder me-2"></i>技能结构
+                                </a>
+                                <a href="#create-first-skill" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-rocket me-2"></i>创建第一个技能
+                                </a>
+                                <a href="#skill-examples" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-code me-2"></i>技能示例
+                                </a>
+                                <a href="#advanced-skills" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-cogs me-2"></i>高级技能
+                                </a>
+                                <a href="#testing-deployment" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-check-circle me-2"></i>测试与部署
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-9">
+                <!-- 主要内容 -->
+                <h1 class="mb-4">OpenClaw技能开发指南</h1>
+                <p class="lead">学习如何创建自定义技能，扩展OpenClaw的能力。</p>
+                
+                <!-- 什么是技能 -->
+                <section id="what-are-skills" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">什么是技能？</h2>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-magic me-2 text-primary"></i>技能定义
+                                    </h5>
+                                    <p>技能是OpenClaw的可扩展模块，让AI能够执行特定任务：</p>
+                                    <ul>
+                                        <li><strong>工具封装</strong> - 将复杂操作封装为简单指令</li>
+                                        <li><strong>工作流自动化</strong> - 创建自动化任务流程</li>
+                                        <li><strong>外部集成</strong> - 连接第三方API和服务</li>
+                                        <li><strong>专业知识</strong> - 提供特定领域的知识</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-puzzle-piece me-2 text-primary"></i>技能类型
+                                    </h5>
+                                    <ul>
+                                        <li><strong>文件操作技能</strong> - 处理文档、图片、数据</li>
+                                        <li><strong>网络技能</strong> - 搜索、爬虫、API调用</li>
+                                        <li><strong>系统技能</strong> - 命令执行、进程管理</li>
+                                        <li><strong>通信技能</strong> - 邮件、消息、通知</li>
+                                        <li><strong>专业领域技能</strong> - 编程、设计、分析</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 技能结构 -->
+                <section id="skill-structure" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">技能结构</h2>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header bg-dark text-light">
+                            <i class="fas fa-folder-tree me-2"></i>标准技能目录结构
+                        </div>
+                        <div class="card-body">
+                            <pre><code class="language-bash">my-weather-skill/           # 技能根目录
+├── SKILL.md              # 技能描述文档（必须）
+├── package.json          # 技能配置（可选）
+├── src/                  # 源代码目录
+│   ├── index.js         # 主入口文件
+│   ├── weather-api.js   # API客户端
+│   └── utils.js         # 工具函数
+├── scripts/              # 脚本文件
+│   └── setup.sh         # 安装脚本
+├── examples/             # 使用示例
+│   └── basic-usage.md   # 基础用法
+└── tests/                # 测试文件
+    └── weather.test.js  # 单元测试</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header bg-dark text-light">
+                            <i class="fas fa-file-alt me-2"></i>SKILL.md 文件格式
+                        </div>
+                        <div class="card-body">
+                            <pre><code class="language-markdown"># 天气查询技能
+
+## 描述
+查询当前天气和天气预报的技能。
+
+## 触发关键词
+- 天气
+- 温度
+- 天气预报
+- 气候
+
+## 使用示例
+```bash
+openclaw "今天北京的天气怎么样？"
+openclaw "查询上海未来三天的天气预报"
+```
+
+## 配置要求
+- 需要天气API密钥
+- 支持的城市列表
+
+## 依赖
+- axios: ^1.0.0
+- moment: ^2.29.0
+
+## 作者
+你的名字 &lt;email@example.com&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 创建第一个技能 -->
+                <section id="create-first-skill" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">创建第一个技能</h2>
+                    
+                    <div class="accordion" id="firstSkillSteps">
+                        <!-- 步骤1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#step1-skill">
+                                    步骤1：创建技能目录
+                                </button>
+                            </h2>
+                            <div id="step1-skill" class="accordion-collapse collapse show" data-bs-parent="#firstSkillSteps">
+                                <div class="accordion-body">
+                                    <pre><code class="language-bash"># 创建技能目录
+mkdir -p ~/.openclaw/skills/my-first-skill
+cd ~/.openclaw/skills/my-first-skill
+
+# 创建基本文件
+touch SKILL.md
+mkdir src examples</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 步骤2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step2-skill">
+                                    步骤2：编写SKILL.md
+                                </button>
+                            </h2>
+                            <div id="step2-skill" class="accordion-collapse collapse" data-bs-parent="#firstSkillSteps">
+                                <div class="accordion-body">
+                                    <pre><code class="language-markdown"># 文件统计技能
+
+## 描述
+统计目录中的文件数量和类型的技能。
+
+## 触发关键词
+- 文件统计
+- 文件数量
+- 目录分析
+- 文件类型
+
+## 使用示例
+```bash
+openclaw "统计当前目录的文件"
+openclaw "分析Downloads文件夹的内容"
+```
+
+## 功能
+- 统计文件总数
+- 按类型分类文件
+- 计算文件大小
+- 生成统计报告</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 步骤3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step3-skill">
+                                    步骤3：创建技能逻辑
+                                </button>
+                            </h2>
+                            <div id="step3-skill" class="accordion-collapse collapse" data-bs-parent="#firstSkillSteps">
+                                <div class="accordion-body">
+                                    <pre><code class="language-javascript">// src/file-stats.js
+const fs = require('fs');
+const path = require('path');
+
+class FileStatsSkill {
+  constructor() {
+    this.name = '文件统计技能';
+    this.description = '统计目录中的文件信息';
+  }
+
+  async execute(directory = '.') {
+    const stats = {
+      totalFiles: 0,
+      totalSize: 0,
+      byType: {},
+      byExtension: {}
+    };
+
+    const files = fs.readdirSync(directory);
+    
+    for (const file of files) {
+      const filePath = path.join(directory, file);
+      const stat = fs.statSync(filePath);
+      
+      if (stat.isFile()) {
+        stats.totalFiles++;
+        stats.totalSize += stat.size;
+        
+        const ext = path.extname(file).toLowerCase() || '无扩展名';
+        stats.byExtension[ext] = (stats.byExtension[ext] || 0) + 1;
+        
+        // 按类型分类
+        const fileType = this.getFileType(ext);
+        stats.byType[fileType] = (stats.byType[fileType] || 0) + 1;
+      }
+    }
+    
+    return this.formatReport(stats);
+  }
+
+  getFileType(extension) {
+    const typeMap = {
+      '.js': 'JavaScript',
+      '.py': 'Python',
+      '.java': 'Java',
+      '.cpp': 'C++',
+      '.md': 'Markdown',
+      '.json': 'JSON',
+      '.txt': '文本',
+      '.pdf': 'PDF',
+      '.jpg': '图片',
+      '.png': '图片',
+      '.gif': '图片',
+      '.mp4': '视频',
+      '.mp3': '音频'
+    };
+    
+    return typeMap[extension] || '其他';
+  }
+
+  formatReport(stats) {
+    let report = `📊 文件统计报告\n`;
+    report += `📁 文件总数: ${stats.totalFiles}\n`;
+    report += `💾 总大小: ${(stats.totalSize / 1024 / 1024).toFixed(2)} MB\n\n`;
+    
+    report += `📂 按类型分类:\n`;
+    for (const [type, count] of Object.entries(stats.byType)) {
+      report += `  ${type}: ${count} 个文件\n`;
+    }
+    
+    report += `\n🔤 按扩展名分类:\n`;
+    for (const [ext, count] of Object.entries(stats.byExtension)) {
+      report += `  ${ext}: ${count} 个文件\n`;
+    }
+    
+    return report;
+  }
+}
+
+module.exports = FileStatsSkill;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 步骤4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step4-skill">
+                                    步骤4：注册技能
+                                </button>
+                            </h2>
+                            <div id="step4-skill" class="accordion-collapse collapse" data-bs-parent="#firstSkillSteps">
+                                <div class="accordion-body">
+                                    <pre><code class="language-javascript">// src/index.js
+const FileStatsSkill = require('./file-stats');
+
+module.exports = {
+  name: 'file-stats',
+  description: '文件统计技能',
+  
+  // 技能初始化
+  async init() {
+    this.skill = new FileStatsSkill();
+    console.log('✅ 文件统计技能已加载');
+  },
+  
+  // 技能执行
+  async execute(params) {
+    const directory = params.directory || '.';
+    return await this.skill.execute(directory);
+  },
+  
+  // 技能匹配
+  matches(input) {
+    const keywords = ['统计文件', '文件数量', '目录分析', '文件统计'];
+    return keywords.some(keyword => input.includes(keyword));
+  }
+};</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 技能示例 -->
+                <section id="skill-examples" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">技能示例</h2>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">示例1：天气查询技能</h5>
+                                    <pre><code class="language-javascript">// 简化的天气技能
+class WeatherSkill {
+  async getWeather(city) {
+    const response = await fetch(
+      `https://api.weatherapi.com/v1/current.json?key=YOUR_KEY&q=${city}`
+    );
+    const data = await response.json();
+    
+    return `🌤️ ${city}天气：
+    温度: ${data.current.temp_c}°C
+    天气: ${data.current.condition.text}
+    湿度: ${data.current.humidity}%
+    风速: ${data.current.wind_kph} km/h`;
+  }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">示例2：Git操作技能</h5>
+                                    <pre><code class="language-javascript">// 简化的Git技能
+const { execSync } = require('child_process');
+
+class GitSkill {
+  getStatus() {
+    return execSync('git status', { encoding: 'utf8' });
+  }
+  
+  commit(message) {
+    execSync(`git add . && git commit -m "${message}"`);
+    return '✅ 提交完成';
+  }
+  
+  push(branch = 'main') {
+    execSync(`git push origin ${branch}`);
+    return `✅ 已推送到 ${branch} 分支`;
+  }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 高级技能 -->
+                <section id="advanced-skills" class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-3">高级技能开发</h2>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header bg-dark text-light">
+                            <i class="fas fa-cogs me-2"></i>技能配置管理
+                        </div>
+                        <div class="card-body">
+                            <pre><code class="language-javascript">// 支持配置文件的技能
+const fs = require('fs');
+const path = require('path');
+
+class ConfigurableSkill {
+  constructor() {
+    this.configPath = path.join(__dirname, 'config.json');
+    this.loadConfig();
+  }
+  
+  loadConfig() {
+    if (fs.existsSync(this.configPath)) {
+      this.config = JSON.parse(fs.readFileSync(this.configPath, 'utf8'));
+    } else {
+      this.config = this.getDefaultConfig();
+      this.saveConfig();
+    }
+  }
+  
+  saveConfig() {
